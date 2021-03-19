@@ -1,13 +1,80 @@
-<!doctype html>
 <html lang="en">
-  <head>
-  <meta charset="UTF-8">
-  <title>Assignment 1 </title>
- <script src="coffee.js" async></script>
+<head>
+    <meta charset="UTF-8">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=2.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"> 
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="crossorigin="anonymous" /> 
+
+
+    <title>Assignment2</title>
 
 </head>
 
 <body>
-  <h2>Assignment 1</h2>
+
+    <header>
+        <center>
+    <h2>What are your goals for today:</h2>
+     
+    </header>
+
+    <form>
+        <center>
+        <input type="text" class="goals" />
+
+        <button class="button" type="button">
+
+        <li><i class="fa-li fa-check-square"></i>Submit</li>
+
+        </button>
+    
+    </form>
+   <div class="container">
+    <ul class="list"></ul>
+
+    </div>
+
+    <script>
+        const goals = document.querySelector('.goals');
+        const button = document.querySelector('.button');
+        const list = document.querySelector('.list');
+
+        button.addEventListener("click", addgoal);
+        
+        function addgoal(event) {
+        event.preventDefault();
+
+            item = document.createElement('li');
+            item.innerText = goals.value;
+
+            completebutton = document.createElement('button');
+            completebutton.innerHTML = '<i class="fas fa-check"></i>';
+            completebutton.classList.add('complete_button');
+            item.appendChild(completebutton);
+            
+            
+            deletebutton = document.createElement('button');
+            deletebutton.innerHTML = '<i class="fas fa-trash"></i>';
+            deletebutton.classList.add('delete_buton');
+            item.appendChild(deletebutton);
+            
+            list.appendChild(item);
+            goals.value = "";
+            
+            deletebutton.addEventListener('click', function deletegoal() {
+                list.removeChild(this.parentElement);
+            });
+
+            completebutton.addEventListener('click', function completegoal() {
+            list.removeChild(this.parentElement);
+        });
+        }
+	</script>
 </body>
 </html>
